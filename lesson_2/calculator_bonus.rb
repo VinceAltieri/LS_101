@@ -1,20 +1,26 @@
-# ask the user for two numbers
-# ask the user for an operation to perform
-# perform the operation on the two numbers
-# output the result
+# calculator_bonus.rb
 
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
 # def number?(num)
-#  ~ /\A[-+]?[0-9]*\.?[0-9]+\Z/.match(num)
+#   valid_integer?(num) || valid_float?(num)
 # end
+
+def valid_integer?(num)
+  # num.to_i.to_s == num
+  # Integer(num) rescue false
+end
+
+def valid_float?(num)
+  # num.to_f.to_s == num
+  # Float(num) rescue false
+end
 
 def valid_number?(num)
   # num.to_i() != 0
-  Integer(num) rescue false
-end
+  end
 
 def operation_to_message(op)
   case op

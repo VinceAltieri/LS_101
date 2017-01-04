@@ -59,9 +59,8 @@ loop do
   end
 
   monthly_interest = apr.to_f / 100 / 12
-  monthly_payment = loan_amount.to_f *
-                    (monthly_interest /
-                    (1 - (1 + monthly_interest)**-loan_term.to_i))
+  monthly_payment = loan_amount.to_f * (monthly_interest /
+  (1 - (1 + monthly_interest)**-loan_term.to_i))
 
   rounded_answer = monthly_payment.round(2)
 

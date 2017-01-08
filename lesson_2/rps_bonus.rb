@@ -1,24 +1,15 @@
-# rock_paper_scissors.rb
+# rps_bonus.rb
 
-# Things to consider
-
-# 1. The program still works if you move the display_results
-#    method definition above prompt.
-# 2. Just after prompt works, before prompt does not.
-#    This is because test_method is using the prompt method
-#    and it is being called before it is defined.
-# 3. I'm not sure.
-
-VALID_CHOICES = %w(rock paper scissors)
+VALID_CHOICES = %w(rock paper scissors lizard spock)
 
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
 def win?(first, second)
-  (first == 'rock' && second == 'scissors') ||
+  (first == 'scissors' && second == 'paper') ||
     (first == 'paper' && second == 'rock') ||
-    (first == 'scissors' && second == 'paper')
+    (first == 'rock' && second == 'scissors')
 end
 
 def display_results(player, computer)
@@ -46,7 +37,7 @@ loop do
 
   computer_choice = VALID_CHOICES.sample
 
-  Kernel.puts("You chose: #{choice}; Computer chose: #{computer_choice}")
+  Kernel.puts("You chose: #{choice}: Computer chose: #{computer_choice}")
 
   display_results(choice, computer_choice)
 

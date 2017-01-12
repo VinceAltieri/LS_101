@@ -1,15 +1,20 @@
 # rps_bonus.rb
 
 VALID_CHOICES = %w(rock paper scissors lizard spock)
+WINS = {
+  'rock' => %w(scissors lizard),
+  'paper' => %w(rock spock),
+  'scissors' => %w(paper lizard),
+  'lizard' => %w(paper spock),
+  'spock' => %w(scissors rock)
+}
 
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
 def win?(first, second)
-  (first == 'scissors' && second == 'paper') ||
-    (first == 'paper' && second == 'rock') ||
-    (first == 'rock' && second == 'scissors')
+  WINS[first].include?(second)
 end
 
 def display_results(player, computer)

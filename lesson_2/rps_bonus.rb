@@ -1,6 +1,15 @@
 # rps_bonus.rb
 
-VALID_CHOICES = %w(rock paper scissors lizard spock)
+# VALID_CHOICES = %w(rock paper scissors lizard spock)
+
+VALID_CHOICES = {
+  'r' => 'rock',
+  'p' => 'paper',
+  's' => 'scissors',
+  'l' => 'lizard',
+  'sp' => 'spock'
+}
+
 WINS = {
   'rock' => %w(scissors lizard),
   'paper' => %w(rock spock),
@@ -10,7 +19,7 @@ WINS = {
 }
 
 def prompt(message)
-  Kernel.puts("=> #{message}")
+  puts("=> #{message}")
 end
 
 def win?(first, second)
@@ -30,21 +39,22 @@ end
 loop do
   choice = ''
   loop do
-    prompt("Choose one: #{VALID_CHOICES.join(', ')}")
-    choice = Kernel.gets().chomp()
+    # prompt("Choose one: #{VALID_CHOICES.join(', ')}")
+    prompt("Choose one: (r)ock (p)aper (s)cissors (sp)ock (l)izard")
+    choice = gets.chomp
 
-    if VALID_CHOICES.include?(choice)
+    if VALID_CHOICES.keys.include?(choice)
       break
     else
       prompt("That's not a valid choice.")
     end
   end
 
-  computer_choice = VALID_CHOICES.sample
+  computer_choice = VALID_CHOICES.keys.sample
 
-  Kernel.puts("You chose: #{choice}: Computer chose: #{computer_choice}")
+  puts "You chose: #{VALID_CHOICES[choice]}: Computer chose: #{VALID_CHOICES[computer_choice]}"
 
-  display_results(choice, computer_choice)
+  display_results(VALID_CHOICES[choice], VALID_CHOICES[computer_choice])
 
   prompt("Do you want to play again?")
   answer = Kernel.gets().chomp()

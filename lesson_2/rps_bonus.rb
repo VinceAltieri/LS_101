@@ -2,6 +2,8 @@
 
 # VALID_CHOICES = %w(rock paper scissors lizard spock)
 
+# require 'pry'
+
 VALID_CHOICES = {
   'r' => 'rock',
   'p' => 'paper',
@@ -52,12 +54,15 @@ loop do
 
   computer_choice = VALID_CHOICES.keys.sample
 
-  puts "You chose: #{VALID_CHOICES[choice]}: Computer chose: #{VALID_CHOICES[computer_choice]}"
+  puts "You chose: #{VALID_CHOICES[choice]};\
+  Computer chose: #{VALID_CHOICES[computer_choice]}"
 
   display_results(VALID_CHOICES[choice], VALID_CHOICES[computer_choice])
 
+  # binding.pry
+
   prompt("Do you want to play again?")
-  answer = Kernel.gets().chomp()
+  answer = gets.chomp
   break unless answer.downcase().start_with?('y')
 end
 

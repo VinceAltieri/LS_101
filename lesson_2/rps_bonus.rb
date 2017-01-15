@@ -47,6 +47,7 @@ loop do
       prompt("Choose one: (r)ock (p)aper (s)cissors (l)izard (sp)ock")
       choice = gets.chomp.downcase
       break if VALID_CHOICES.keys.include?(choice)
+
       prompt("That's not a valid choice.")
     end
 
@@ -67,11 +68,13 @@ loop do
     Computer's score is: #{computer_score}"
     break if player_score == WINNING_SCORE || computer_score == WINNING_SCORE
   end
+
   if player_score == WINNING_SCORE
     puts "Congratulations you won the game!"
   else
     puts "The computer outsmarted you this time...don't let skynet win..."
   end
+
   prompt("Do you want to do battle again?")
   answer = gets.chomp.downcase
   break unless answer.start_with?('y')

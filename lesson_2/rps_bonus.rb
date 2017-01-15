@@ -1,7 +1,5 @@
 # rps_bonus.rb
 
-# require 'pry'
-
 VALID_CHOICES = {
   'r' => 'rock',
   'p' => 'paper',
@@ -18,6 +16,8 @@ WINS = {
   'spock' => %w(scissors rock)
 }
 
+WINNING_SCORE = 5
+
 def prompt(message)
   puts("=> #{message}")
 end
@@ -28,11 +28,11 @@ end
 
 def display_results(player, computer)
   if win?(player, computer)
-    prompt("You won!")
+    prompt("You won this round!")
   elsif win?(computer, player)
-    prompt("Computer won!")
+    prompt("Computer won this round!")
   else
-    prompt("It's a tie!")
+    prompt("This round is a tie!")
   end
 end
 
@@ -45,13 +45,9 @@ loop do
   loop do
     loop do
       prompt("Choose one: (r)ock (p)aper (s)cissors (l)izard (sp)ock")
-      choice = gets.chomp
-
-      if VALID_CHOICES.keys.include?(choice)
-        break
-      else
-        prompt("That's not a valid choice.")
-      end
+      choice = gets.chomp.downcase
+      break if VALID_CHOICES.keys.include?(choice)
+      prompt("That's not a valid choice.")
     end
 
     computer_choice = VALID_CHOICES.keys.sample
@@ -69,10 +65,16 @@ loop do
 
     puts "Your score is: #{player_score}\
     Computer's score is: #{computer_score}"
-
-    break if player_score == 5 || computer_score == 5
+    break if player_score == WINNING_SCORE || computer_score == WINNING_SCORE
   end
-  break
+  if player_score == WINNING_SCORE
+    puts "Congratulations you won the game!"
+  else
+    puts "The computer outsmarted you this time...don't let skynet win..."
+  end
+  prompt("Do you want to do battle again?")
+  answer = gets.chomp.downcase
+  break unless answer.start_with?('y')
 end
 
 prompt("Thank you for playing. Good bye!")

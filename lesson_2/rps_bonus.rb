@@ -1,7 +1,5 @@
 # rps_bonus.rb
 
-# VALID_CHOICES = %w(rock paper scissors lizard spock)
-
 # require 'pry'
 
 VALID_CHOICES = {
@@ -40,30 +38,41 @@ end
 
 loop do
   choice = ''
+  player_score = 0
+  computer_score = 0
+  puts "Welcome to rock, paper, scissors, lizard, spock!\
+  The first player to reach a score of five wins!"
   loop do
-    # prompt("Choose one: #{VALID_CHOICES.join(', ')}")
-    prompt("Choose one: (r)ock (p)aper (s)cissors (sp)ock (l)izard")
-    choice = gets.chomp
+    loop do
+      prompt("Choose one: (r)ock (p)aper (s)cissors (l)izard (sp)ock")
+      choice = gets.chomp
 
-    if VALID_CHOICES.keys.include?(choice)
-      break
-    else
-      prompt("That's not a valid choice.")
+      if VALID_CHOICES.keys.include?(choice)
+        break
+      else
+        prompt("That's not a valid choice.")
+      end
     end
+
+    computer_choice = VALID_CHOICES.keys.sample
+
+    puts "You chose: #{VALID_CHOICES[choice]};\
+    Computer chose: #{VALID_CHOICES[computer_choice]}"
+
+    display_results(VALID_CHOICES[choice], VALID_CHOICES[computer_choice])
+
+    if win?(VALID_CHOICES[choice], VALID_CHOICES[computer_choice])
+      player_score += 1
+    elsif win?(VALID_CHOICES[computer_choice], VALID_CHOICES[choice])
+      computer_score += 1
+    end
+
+    puts "Your score is: #{player_score}\
+    Computer's score is: #{computer_score}"
+
+    break if player_score == 5 || computer_score == 5
   end
-
-  computer_choice = VALID_CHOICES.keys.sample
-
-  puts "You chose: #{VALID_CHOICES[choice]};\
-  Computer chose: #{VALID_CHOICES[computer_choice]}"
-
-  display_results(VALID_CHOICES[choice], VALID_CHOICES[computer_choice])
-
-  # binding.pry
-
-  prompt("Do you want to play again?")
-  answer = gets.chomp
-  break unless answer.downcase().start_with?('y')
+  break
 end
 
 prompt("Thank you for playing. Good bye!")

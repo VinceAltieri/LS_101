@@ -24,12 +24,15 @@ puts factors(0)
 # but we just want to handle it gracefully instead of raising an exception or going
 # into an infinite loop.
 
+# answer
+# used a while loop.
+
 Bonus 1
 
 What is the purpose of the number % dividend == 0 ?
 
 # This is to find a factor. If the remainder is 0, then the number is divided
-# evenly into the number we are trying to factor. Only these numbers are added
+# evenly into the number we are trying to find factors for. Only these numbers are added
 # to the array.
 
 Bonus 2

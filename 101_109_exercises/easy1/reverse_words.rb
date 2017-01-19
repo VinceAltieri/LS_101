@@ -11,4 +11,21 @@ def reverse_sentence(string)
 end
 
 def reverse_words(string)
-  words_above_five = string.split.select { |word| word.size >= 5 }
+  if string.split.map { |word| word.size > 5 }
+    reversed = string.split.map(&:reverse)
+  end
+  reversed.join(' ')
+end
+
+# solution - was not able to solve.
+
+# def reverse_words(string)
+#   words = []
+
+#   string.split.each do |word|
+#     word.reverse! if word.size >= 5
+#     words << word
+#   end
+
+#   words.join(' ')
+# end

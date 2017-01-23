@@ -11,3 +11,7 @@ puts multisum(3)
 puts multisum(5)
 puts multisum(10)
 puts multisum(1000)
+
+# further exploration
+
+# reduce was used in the solution.

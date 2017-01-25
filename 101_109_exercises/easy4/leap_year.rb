@@ -17,3 +17,8 @@ puts leap_year?(1700)
 puts leap_year?(1)
 puts leap_year?(100)
 puts leap_year?(400)
+
+# further exploration
+# if year % 100 == 0  is first then the test cases for years
+# 2400, 240000, 2000, and 400 would fail even though they
+# are leap years.

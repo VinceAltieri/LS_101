@@ -1,8 +1,8 @@
 #calculate_bonus.rb
 
-def calculate_bonus(salary, bonus)
+def calculate_bonus(salary, boolean)
   if boolean == true
-    integer / 2
+    salary / 2
   else
     0
   end

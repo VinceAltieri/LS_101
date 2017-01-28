@@ -11,3 +11,4 @@ end
 #   color == "blue" || color == "green"
 # end
 
+# Since the statement is 'truthy' the other lines are not needed.

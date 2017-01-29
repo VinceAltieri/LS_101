@@ -17,20 +17,26 @@ produce = {
 
 # puts produce.select { |k, v| v == 'Fruit'}
 
-hash_keys = produce.keys
-counter = 0
 
-new_hash = {}
+def get_fruits(hash)
+  new_hash = {}
+  counter = 0
+  keys = hash.keys
 
-loop do
-  break if counter == produce.length
-  current_item = hash_keys[counter]
-  current_item_value = produce[current_item]
-  if current_item_value == 'Fruit'
-    new_hash[current_item] = current_item_value
+  loop do
+    break if counter == hash.length
+
+    current_item = keys[counter]
+    current_item_value = hash[current_item]
+
+    if current_item_value == 'Fruit'
+      new_hash[current_item] = current_item_value
+    end
+
+    counter += 1
   end
 
-  counter += 1
+  new_hash
 end
 
-puts new_hash
+puts get_fruits(produce)

@@ -17,13 +17,25 @@
 # convert to number from hash look-up table
 # continue for the length of the string
 
-def str_to_int(number_string)
-  number_lookup = { '1': 1, '2': 2, '3': 3, '4': 4, '5': 5,
-                    '6': 6, '7': 7, '8': 8, '9': 9
-                  }
+def string_to_integer(number_string)
+  lookup_table = { '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5,
+                   '6' => 6, '7' => 7, '8' => 8, '9' => 9
+                 }
 
-  number_string.split('')
-  number_string.each do {
+  strings = lookup_table.keys
+  counter = 0
 
-  }
+  to_integer_array = []
+
+  loop do
+    break if counter == number_string.size
+    current_string_char = number_string[counter]
+    to_integer_array << lookup_table.fetch(current_string_char)
+    counter += 1
+  end
+  to_integer = to_integer_array.inject { |a, i| a * 10 + i }
+end
+
+puts string_to_integer('4321') == 4321
+puts string_to_integer('570') == 570
 
